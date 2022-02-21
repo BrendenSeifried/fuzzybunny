@@ -1,6 +1,6 @@
 // Create your own supabase database using the provided seeds.sql file
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://kwuprxiphonycrgvghdh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3dXByeGlwaG9ueWNyZ3ZnaGRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDQ0MzUzMzEsImV4cCI6MTk2MDAxMTMzMX0.62oTUOOAQuTrdr4remhHfeCx6BxTyHszj7IU3dya7f8';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -22,7 +22,8 @@ export async function deleteBunny(id) {
 
 export async function createBunny(bunny) {
     // create a bunny using the bunny argument
-
+    const response = await client.from('fuzzy_bunnies').insert({ description: bunny, complete: false, user_id: client.auth.user().id });
+    console.log(response, 'testing');
     return checkError(response);
 }
 
