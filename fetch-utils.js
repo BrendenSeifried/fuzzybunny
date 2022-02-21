@@ -10,13 +10,14 @@ export function getUser() {
 
 export async function getFamilies() {
     // fetch all families and their bunnies
-
+    const response = await client.from('loving_families').select('*, fuzzy_bunnies(*)').match({ 'fuzzy_bunnies.user_id': client.auth.session().user.id });
+    console.log(response);
     return checkError(response);
 }
 
 export async function deleteBunny(id) {
     // delete a single bunny using the id argument
-
+    const response = await client.from('fuzzy_bunnies').delete().match({ id:id }).single();
     return checkError(response);
 }
 
@@ -61,4 +62,14 @@ export async function logout() {
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
+}
+
+//-----------------------MY STUFF------------------------------------
+export function displayFamily(item) {
+    const li = document.createElement('li');
+    if (item.complete) {
+        li.classList.add('complete');
+    }
+    li.textContent = item.name;
+    return li;
 }
