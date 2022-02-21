@@ -27,7 +27,7 @@ form.addEventListener('submit', async e => {
 window.addEventListener('load', async () => {
     // let's dynamically fill in the families dropdown from supabase
     // grab the select HTML element from the DOM
-
+    // const select = document.querySelector('select');
     // go get the families from supabase
 
     // for each family
