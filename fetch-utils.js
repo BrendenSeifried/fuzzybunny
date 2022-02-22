@@ -22,12 +22,6 @@ export async function deleteBunny(id) {
     return checkError(response);
 }
 
-// export async function createBunny(bunny) {
-//     // create a bunny using the bunny argument
-//     const response = await client.from('fuzzy_bunnies').insert({ ...bunny, user_id: client.auth.session().user.id });
-//     console.log(response, 'testing');
-//     return checkError(response);
-// }
 
 export async function createBunny(bunny) {
         // create a bunny using the bunny argument
@@ -74,11 +68,3 @@ function checkError({ data, error }) {
 }
 
 //-----------------------MY STUFF------------------------------------
-// export function displayFamily(item) {
-//     const li = document.createElement('li');
-//     if (item.complete) {
-//         li.classList.add('complete');
-//     }
-//     li.textContent = item.name;
-//     return li;
-// }
